@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:contact_manager/models/contact.dart';
 
-import '../models/contact.dart';
 
 class ContactForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final Contact? initialContact;
   final Function(Contact) onSave;
 
-  ContactForm({required this.formKey, this.initialContact, required this.onSave});
+  const ContactForm({super.key, required this.formKey, this.initialContact, required this.onSave});
 
   @override
   _ContactFormState createState() => _ContactFormState();
@@ -47,7 +46,7 @@ class _ContactFormState extends State<ContactForm> {
         children: [
           TextFormField(
             controller: _nameController,
-            decoration: InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: 'Name'),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a name';
@@ -57,7 +56,7 @@ class _ContactFormState extends State<ContactForm> {
           ),
           TextFormField(
             controller: _emailController,
-            decoration: InputDecoration(labelText: 'Email'),
+            decoration: const InputDecoration(labelText: 'Email'),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter an email';
@@ -67,7 +66,7 @@ class _ContactFormState extends State<ContactForm> {
           ),
           TextFormField(
             controller: _phoneController,
-            decoration: InputDecoration(labelText: 'Phone'),
+            decoration: const InputDecoration(labelText: 'Phone'),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a phone number';
@@ -75,7 +74,7 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
               if (widget.formKey.currentState!.validate()) {
@@ -88,7 +87,7 @@ class _ContactFormState extends State<ContactForm> {
                 widget.onSave(contact);
               }
             },
-            child: Text('Save'),
+            child: const Text('Save'),
           ),
         ],
       ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
+import 'contact_list_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -17,11 +20,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Center(
         child: _isLoading
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Form(
@@ -31,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextFormField(
                         controller: _emailController,
-                        decoration: InputDecoration(hintText: 'Email'),
+                        decoration: const InputDecoration(hintText: 'Email'),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter your email';
@@ -39,10 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       TextFormField(
                         controller: _passwordController,
-                        decoration: InputDecoration(hintText: 'Password'),
+                        decoration: const InputDecoration(hintText: 'Password'),
                         obscureText: true,
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -51,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -61,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             _signInWithEmailAndPassword();
                           }
                         },
-                        child: Text('Login'),
+                        child: const Text('Login'),
                       ),
                     ],
                   ),
@@ -73,12 +76,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _signInWithEmailAndPassword() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim());
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
       print('Logged in user: ${userCredential.user?.uid}');
-      Navigator.pushReplacementNamed(context, '/contactList');
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ContactListScreen()),
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;
@@ -103,14 +111,14 @@ class _LoginScreenState extends State<LoginScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: const Text('Error'),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Ok'),
+              child: const Text('Ok'),
             )
           ],
         );

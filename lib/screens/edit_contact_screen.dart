@@ -7,7 +7,7 @@ import 'package:contact_manager/widgets/contact_form.dart';
 class EditContactScreen extends StatefulWidget {
   final Contact contact;
 
-  EditContactScreen({required this.contact});
+  const EditContactScreen({super.key, required this.contact});
 
   @override
   _EditContactScreenState createState() => _EditContactScreenState();
@@ -20,7 +20,7 @@ class _EditContactScreenState extends State<EditContactScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Contact'),
+        title: const Text('Edit Contact'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -6,34 +6,34 @@ import '../models/contact.dart';
 class DeleteContactScreen extends StatelessWidget {
   final Contact contact;
 
-  DeleteContactScreen({required this.contact});
+  const DeleteContactScreen({super.key, required this.contact});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Delete Contact'),
+        title: const Text('Delete Contact'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Are you sure you want to delete this contact?',
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Text(
               contact.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -41,7 +41,7 @@ class DeleteContactScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('Cancel'),
+                  child: const Text('Cancel'),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -54,7 +54,7 @@ class DeleteContactScreen extends StatelessWidget {
                         .delete();
                     Navigator.pop(context);
                   },
-                  child: Text('Delete'),
+                  child: const Text('Delete'),
                 ),
               ],
             ),

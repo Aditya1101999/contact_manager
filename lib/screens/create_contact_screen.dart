@@ -7,11 +7,13 @@ import 'package:contact_manager/widgets/contact_form.dart';
 class CreateContactScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
+  CreateContactScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Contact'),
+        title: const Text('Create Contact'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

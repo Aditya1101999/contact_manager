@@ -6,7 +6,7 @@ import 'package:contact_manager/screens/delete_contact_screen.dart';
 class ContactListItem extends StatelessWidget {
   final Contact contact;
 
-  ContactListItem({required this.contact});
+  const ContactListItem({super.key, required this.contact});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ContactListItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: () {
               Navigator.push(
                 context,
@@ -28,7 +28,7 @@ class ContactListItem extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () {
               Navigator.push(
                 context,

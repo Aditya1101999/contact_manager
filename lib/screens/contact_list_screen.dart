@@ -6,6 +6,8 @@ import 'package:contact_manager/widgets/contact_list_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ContactListScreen extends StatefulWidget {
+  const ContactListScreen({super.key});
+
   @override
   // ignore: library_private_types_in_public_api
   _ContactListScreenState createState() => _ContactListScreenState();
@@ -22,10 +24,10 @@ class _ContactListScreenState extends State<ContactListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contacts'),
+        title: const Text('Contacts'),
         actions: [
           IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -38,7 +40,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
         stream: _contactsCollection.snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -61,7 +63,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
         onPressed: () {
           Navigator.pushNamed(context, '/create_contact');
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
